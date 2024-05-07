@@ -1,0 +1,32 @@
+﻿@using ProniaWebApp.Models
+@model List<Category>
+@{
+    int count = 0;
+}
+<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Products.Count()</td>
+            <td><a class="btn btn-primary" asp-action="Update" asp-controller="Category" asp-route-id="@item.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+</div>
